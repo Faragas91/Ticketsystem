@@ -1,3 +1,6 @@
+// structure of a ticket in the ticketing system
+// this will be a template for tickets in the database
+
 namespace Ticketsystem.Api.Models
 {
     public class Ticket
