@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Ticketsystem.Api.Data;
 using Ticketsystem.Api.Models;
 using Ticketsystem.Api.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ticketsystem.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class TicketsController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -63,6 +65,7 @@ namespace Ticketsystem.Api.Controllers
         }
 
         // PUT: api/tickets/{id}/status
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}/status")]
         public async Task<ActionResult<TicketDto>> UpdateStatus(int id, [FromQuery] TicketStatus newStatus, [FromQuery] UserRole role)
         {

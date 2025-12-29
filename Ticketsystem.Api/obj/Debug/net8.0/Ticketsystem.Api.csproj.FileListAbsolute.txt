@@ -35,3 +35,11 @@
 /mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/obj/Debug/net8.0/Ticketsystem.Api.pdb
 /mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/obj/Debug/net8.0/Ticketsystem.Api.genruntimeconfig.cache
 /mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/obj/Debug/net8.0/ref/Ticketsystem.Api.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/mnt/bernhard/Projects/ticketsystem/Ticketsystem.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
