@@ -42,7 +42,9 @@ builder.Services.AddSwaggerGen(c =>
 
 // EF Core InMemory DB 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("TicketsystemDb"));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
 
 // JWT Authenfication Configuration
 var jwtSettings = builder.Configuration.GetSection("Jwt");
