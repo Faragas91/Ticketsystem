@@ -61,5 +61,36 @@ namespace Ticketsystem.Api.Controllers
 
             return CreatedAtAction(nameof(GetTickets), new { id = ticket.Id }, ticket);
         }
+
+        // PUT: api/tickets/{id}/status
+        [HttpPut("{id}/status")]
+        public async Task<ActionResult<TicketDto>> UpdateStatus(int id, [FromQuery] TicketStatus newStatus, [FromQuery] UserRole role)
+        {
+            var ticket = await _context.Tickets.FindAsync(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            // Only Admins can change the status to Closed or Approved
+            if (role != UserRole.Admin)
+            {
+                return Forbid("Only admins can change the ticket status to Closed.");
+            }
+            ticket.Status = newStatus;
+            await _context.SaveChangesAsync();
+
+            var ticketDto = new TicketDto
+            {
+                Id = ticket.Id,
+                Title = ticket.Title,
+                Description = ticket.Description,
+                Status = ticket.Status,
+                CreatedAt = ticket.CreatedAt,
+                CreatedByUserId = ticket.CreatedByUserId
+            };
+
+            return Ok(ticketDto);
+        }
     }
 }
