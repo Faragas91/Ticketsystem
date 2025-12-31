@@ -1,26 +1,32 @@
 using System.Net;
-using System.Net.Http.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
-namespace Ticketsystem.Tests;
-
-public class TicketsControllerTest : IClassFixture<WebApplicationFactory<Program>>
+public class TicketsControllerTest
+    : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly HttpClient _client;
 
-    public TicketsControllerTest(WebApplicationFactory<Program> factory)
+    public TicketsControllerTest(CustomWebApplicationFactory factory)
     {
         _client = factory.CreateClient();
+
+        using var scope = factory.Services.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        context.Tickets.Add(new Ticket
+        {
+            Title = "Test Ticket",
+            Description = "Test Beschreibung",
+        });
+
+        context.SaveChanges();
     }
 
     [Fact]
     public async Task GetTickets_ReturnsOk()
     {
-        // Act
         var response = await _client.GetAsync("/api/tickets");
-        
-        // Assert
+
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }
