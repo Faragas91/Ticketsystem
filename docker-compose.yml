@@ -10,6 +10,16 @@ services:
     volumes:
       - sql_data:/var/opt/mssql
 
+  api:
+    build:
+      context: ./Ticketsystem.Api
+    container_name: ticketsystem-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
 volumes:
   sql_data:
-
